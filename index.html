@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON VEGAS | Cyber Casino</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Фоновые эффекты -->
+    <div class="bg-effects">
+        <div class="neon-grid"></div>
+        <div class="floating-chips">
+            <div class="chip">♠</div>
+            <div class="chip">♥</div>
+            <div class="chip">♦</div>
+            <div class="chip">♣</div>
+        </div>
+    </div>
+
+    <!-- UI Слой -->
+    <div class="ui-layer">
+        
+        <!-- Верхняя панель -->
+        <header class="hud-header">
+            <div class="logo">
+                <span class="neon-text">NEON</span> VEGAS
+            </div>
+            <div class="balance-display">
+                <div class="balance-label">BALANCE</div>
+                <div class="balance-amount" id="balance">10000</div>
+                <div class="balance-currency">CREDITS</div>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="label">WON TODAY</span>
+                    <span class="value" id="won-today">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">GAMES</span>
+                    <span class="value" id="games-played">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Навигация по играм -->
+        <nav class="game-nav">
+            <button class="nav-btn active" data-game="lobby">LOBBY</button>
+            <button class="nav-btn" data-game="slots">SLOTS</button>
+            <button class="nav-btn" data-game="roulette">ROULETTE</button>
+            <button class="nav-btn" data-game="dice">DICE</button>
+        </nav>
+
+        <!-- Главное меню (Lobby) -->
+        <section class="game-section active" id="lobby">
+            <h1 class="section-title">CHOOSE YOUR <span class="neon-text">GAME</span></h1>
+            <div class="games-grid">
+                <div class="game-card" data-game="slots">
+                    <div class="game-icon">🎰</div>
+                    <h3>NEON SLOTS</h3>
+                    <p>3 барабана. Джекпот x100</p>
+                    <div class="play-btn">PLAY</div>
+                </div>
+                <div class="game-card" data-game="roulette">
+                    <div class="game-icon">🎡</div>
+                    <h3>CYBER ROULETTE</h3>
+                    <p>Красное/Чёрное. x2</p>
+                    <div class="play-btn">PLAY</div>
+                </div>
+                <div class="game-card" data-game="dice">
+                    <div class="game-icon">🎲</div>
+                    <h3>QUANTUM DICE</h3>
+                    <p>Угадай число. x5</p>
+                    <div class="play-btn">PLAY</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Слот-машина -->
+        <section class="game-section" id="slots">
+            <h2 class="section-title">NEON <span class="neon-text">SLOTS</span></h2>
+            <div class="slot-machine">
+                <div class="slot-display">
+                    <div class="reel" id="reel1">
+                        <div class="symbol">7</div>
+                        <div class="symbol">💎</div>
+                        <div class="symbol">🍒</div>
+                    </div>
+                    <div class="reel" id="reel2">
+                        <div class="symbol">💎</div>
+                        <div class="symbol">7</div>
+                        <div class="symbol">🍋</div>
+                    </div>
+                    <div class="reel" id="reel3">
+                        <div class="symbol">🍒</div>
+                        <div class="symbol">💎</div>
+                        <div class="symbol">7</div>
+                    </div>
+                </div>
+                <div class="slot-controls">
+                    <div class="bet-control">
+                        <label>BET</label>
+                        <div class="bet-display">
+                            <button class="bet-btn" id="bet-decrease">-</button>
+                            <span id="bet-amount">100</span>
+                            <button class="bet-btn" id="bet-increase">+</button>
+                        </div>
+                    </div>
+                    <button class="spin-btn" id="spin-btn">SPIN</button>
+                </div>
+                <div class="slot-result" id="slot-result"></div>
+            </div>
+        </section>
+
+        <!-- Рулетка -->
+        <section class="game-section" id="roulette">
+            <h2 class="section-title">CYBER <span class="neon-text">ROULETTE</span></h2>
+            <div class="roulette-container">
+                <div class="roulette-wheel" id="roulette-wheel">
+                    <div class="wheel-center"></div>
+                </div>
+                <div class="roulette-controls">
+                    <div class="bet-control">
+                        <label>BET</label>
+                        <div class="bet-display">
+                            <button class="bet-btn" id="roulette-bet-decrease">-</button>
+                            <span id="roulette-bet-amount">100</span>
+                            <button class="bet-btn" id="roulette-bet-increase">+</button>
+                        </div>
+                    </div>
+                    <div class="color-bets">
+                        <button class="color-btn red" data-color="red">RED x2</button>
+                        <button class="color-btn black" data-color="black">BLACK x2</button>
+                        <button class="color-btn green" data-color="green">GREEN x14</button>
+                    </div>
+                    <button class="spin-btn" id="roulette-spin-btn">SPIN WHEEL</button>
+                </div>
+                <div class="roulette-result" id="roulette-result"></div>
+            </div>
+        </section>
+
+        <!-- Кости -->
+        <section class="game-section" id="dice">
+            <h2 class="section-title">QUANTUM <span class="neon-text">DICE</span></h2>
+            <div class="dice-container">
+                <div class="dice-display">
+                    <div class="dice" id="dice1">
+                        <div class="dice-face">⚀</div>
+                    </div>
+                    <div class="dice" id="dice2">
+                        <div class="dice-face">⚁</div>
+                    </div>
+                </div>
+                <div class="dice-controls">
+                    <div class="bet-control">
+                        <label>BET</label>
+                        <div class="bet-display">
+                            <button class="bet-btn" id="dice-bet-decrease">-</button>
+                            <span id="dice-bet-amount">100</span>
+                            <button class="bet-btn" id="dice-bet-increase">+</button>
+                        </div>
+                    </div>
+                    <div class="number-select">
+                        <label>PICK NUMBER (2-12)</label>
+                        <input type="range" id="dice-number" min="2" max="12" value="7">
+                        <div class="number-display" id="dice-number-display">7</div>
+                    </div>
+                    <button class="spin-btn" id="dice-roll-btn">ROLL DICE</button>
+                </div>
+                <div class="dice-result" id="dice-result"></div>
+            </div>
+        </section>
+
+        <!-- История игр -->
+        <aside class="history-panel">
+            <h3>GAME HISTORY</h3>
+            <div class="history-list" id="history-list">
+                <div class="history-item empty">No games yet</div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Эффект выигрыша -->
+    <div class="win-overlay" id="win-overlay">
+        <div class="win-text" id="win-text">BIG WIN!</div>
+        <div class="win-amount" id="win-amount">+1000</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
